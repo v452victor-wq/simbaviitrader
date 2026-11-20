@@ -1,0 +1,376 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <block type="trade" id="MASTER5_TRADE" x="0" y="0">
+    <statement name="SUBMARKET">
+      <block type="variables_set" id="MASTER5_STAKE">
+        <field name="VAR">Master 5 stake</field>
+        <value name="VALUE">
+          <block type="math_number" id="MASTER5_STAKE_VALUE">
+            <field name="NUM">0.35</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="MASTER5_TAKE_PROFIT">
+            <field name="VAR">Master 5 take profit</field>
+            <value name="VALUE">
+              <block type="math_number" id="MASTER5_TAKE_PROFIT_VALUE">
+                <field name="NUM">10</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="MASTER5_STOP_LOSS">
+                <field name="VAR">Master 5 stop loss</field>
+                <value name="VALUE">
+                  <block type="math_number" id="MASTER5_STOP_LOSS_VALUE">
+                    <field name="NUM">10</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="market" id="MASTER5_MARKET">
+                    <field name="MARKET_LIST">volidx</field>
+                    <field name="SUBMARKET_LIST">random_index</field>
+                    <field name="SYMBOL_LIST">R_100</field>
+                    <field name="TRADETYPECAT_LIST">digits</field>
+                    <field name="TRADETYPE_LIST">evenodd</field>
+                    <field name="TYPE_LIST">both</field>
+                    <field name="CANDLEINTERVAL_LIST">60</field>
+                    <field name="DURATIONTYPE_LIST">t</field>
+                    <field name="PAYOUTTYPE_LIST">stake</field>
+                    <field name="CURRENCY_LIST">USD</field>
+                    <field name="RESTARTONERROR">FALSE</field>
+                    <value name="DURATION">
+                      <block type="math_number" id="MASTER5_DURATION">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="AMOUNT">
+                      <block type="variables_get" id="MASTER5_STAKE_GET">
+                        <field name="VAR">Master 5 stake</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="before_purchase" id="MASTER5_BEFORE" x="0" y="320">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="controls_if" id="MASTER5_SIGNAL">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_operation" id="MASTER5_ALL_ODD_1">
+            <field name="OP">AND</field>
+            <value name="A">
+              <block type="math_number_property" id="MASTER5_ODD_1">
+                <field name="PROPERTY">ODD</field>
+                <value name="NUMBER_TO_CHECK">
+                  <block type="lists_getIndex" id="MASTER5_DIGIT_1">
+                    <mutation statement="false" at="true"></mutation>
+                    <field name="MODE">GET</field>
+                    <field name="WHERE">FROM_END</field>
+                    <value name="VALUE">
+                      <block type="lastDigitList" id="MASTER5_LIST_ODD"></block>
+                    </value>
+                    <value name="AT">
+                      <block type="math_number" id="MASTER5_INDEX_1">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_operation" id="MASTER5_ALL_ODD_2">
+                <field name="OP">AND</field>
+                <value name="A">
+                  <block type="math_number_property" id="MASTER5_ODD_2">
+                    <field name="PROPERTY">ODD</field>
+                    <value name="NUMBER_TO_CHECK">
+                      <block type="lists_getIndex" id="MASTER5_DIGIT_2">
+                        <mutation statement="false" at="true"></mutation>
+                        <field name="MODE">GET</field>
+                        <field name="WHERE">FROM_END</field>
+                        <value name="VALUE">
+                          <block type="lastDigitList" id="MASTER5_LIST_ODD_2"></block>
+                        </value>
+                        <value name="AT">
+                          <block type="math_number" id="MASTER5_INDEX_2">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_operation" id="MASTER5_ALL_ODD_3">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="math_number_property" id="MASTER5_ODD_3">
+                        <field name="PROPERTY">ODD</field>
+                        <value name="NUMBER_TO_CHECK">
+                          <block type="lists_getIndex" id="MASTER5_DIGIT_3">
+                            <mutation statement="false" at="true"></mutation>
+                            <field name="MODE">GET</field>
+                            <field name="WHERE">FROM_END</field>
+                            <value name="VALUE">
+                              <block type="lastDigitList" id="MASTER5_LIST_ODD_3"></block>
+                            </value>
+                            <value name="AT">
+                              <block type="math_number" id="MASTER5_INDEX_3">
+                                <field name="NUM">3</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_operation" id="MASTER5_ALL_ODD_4">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="math_number_property" id="MASTER5_ODD_4">
+                            <field name="PROPERTY">ODD</field>
+                            <value name="NUMBER_TO_CHECK">
+                              <block type="lists_getIndex" id="MASTER5_DIGIT_4">
+                                <mutation statement="false" at="true"></mutation>
+                                <field name="MODE">GET</field>
+                                <field name="WHERE">FROM_END</field>
+                                <value name="VALUE">
+                                  <block type="lastDigitList" id="MASTER5_LIST_ODD_4"></block>
+                                </value>
+                                <value name="AT">
+                                  <block type="math_number" id="MASTER5_INDEX_4">
+                                    <field name="NUM">4</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number_property" id="MASTER5_ODD_5">
+                            <field name="PROPERTY">ODD</field>
+                            <value name="NUMBER_TO_CHECK">
+                              <block type="lists_getIndex" id="MASTER5_DIGIT_5">
+                                <mutation statement="false" at="true"></mutation>
+                                <field name="MODE">GET</field>
+                                <field name="WHERE">FROM_END</field>
+                                <value name="VALUE">
+                                  <block type="lastDigitList" id="MASTER5_LIST_ODD_5"></block>
+                                </value>
+                                <value name="AT">
+                                  <block type="math_number" id="MASTER5_INDEX_5">
+                                    <field name="NUM">5</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="purchase" id="MASTER5_BUY_EVEN">
+            <field name="PURCHASE_LIST">DIGITEVEN</field>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="controls_if" id="MASTER5_ALL_EVEN">
+            <value name="IF0">
+              <block type="logic_operation" id="MASTER5_ALL_EVEN_1">
+                <field name="OP">AND</field>
+                <value name="A">
+                  <block type="math_number_property" id="MASTER5_EVEN_1">
+                    <field name="PROPERTY">EVEN</field>
+                    <value name="NUMBER_TO_CHECK">
+                      <block type="lists_getIndex" id="MASTER5_EVEN_DIGIT_1">
+                        <mutation statement="false" at="true"></mutation>
+                        <field name="MODE">GET</field>
+                        <field name="WHERE">FROM_END</field>
+                        <value name="VALUE">
+                          <block type="lastDigitList" id="MASTER5_LIST_EVEN"></block>
+                        </value>
+                        <value name="AT">
+                          <block type="math_number" id="MASTER5_EVEN_INDEX_1">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_operation" id="MASTER5_ALL_EVEN_2">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="math_number_property" id="MASTER5_EVEN_2">
+                        <field name="PROPERTY">EVEN</field>
+                        <value name="NUMBER_TO_CHECK">
+                          <block type="lists_getIndex" id="MASTER5_EVEN_DIGIT_2">
+                            <mutation statement="false" at="true"></mutation>
+                            <field name="MODE">GET</field>
+                            <field name="WHERE">FROM_END</field>
+                            <value name="VALUE">
+                              <block type="lastDigitList" id="MASTER5_LIST_EVEN_2"></block>
+                            </value>
+                            <value name="AT">
+                              <block type="math_number" id="MASTER5_EVEN_INDEX_2">
+                                <field name="NUM">2</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_operation" id="MASTER5_ALL_EVEN_3">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="math_number_property" id="MASTER5_EVEN_3">
+                            <field name="PROPERTY">EVEN</field>
+                            <value name="NUMBER_TO_CHECK">
+                              <block type="lists_getIndex" id="MASTER5_EVEN_DIGIT_3">
+                                <mutation statement="false" at="true"></mutation>
+                                <field name="MODE">GET</field>
+                                <field name="WHERE">FROM_END</field>
+                                <value name="VALUE">
+                                  <block type="lastDigitList" id="MASTER5_LIST_EVEN_3"></block>
+                                </value>
+                                <value name="AT">
+                                  <block type="math_number" id="MASTER5_EVEN_INDEX_3">
+                                    <field name="NUM">3</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_operation" id="MASTER5_ALL_EVEN_4">
+                            <field name="OP">AND</field>
+                            <value name="A">
+                              <block type="math_number_property" id="MASTER5_EVEN_4">
+                                <field name="PROPERTY">EVEN</field>
+                                <value name="NUMBER_TO_CHECK">
+                                  <block type="lists_getIndex" id="MASTER5_EVEN_DIGIT_4">
+                                    <mutation statement="false" at="true"></mutation>
+                                    <field name="MODE">GET</field>
+                                    <field name="WHERE">FROM_END</field>
+                                    <value name="VALUE">
+                                      <block type="lastDigitList" id="MASTER5_LIST_EVEN_4"></block>
+                                    </value>
+                                    <value name="AT">
+                                      <block type="math_number" id="MASTER5_EVEN_INDEX_4">
+                                        <field name="NUM">4</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number_property" id="MASTER5_EVEN_5">
+                                <field name="PROPERTY">EVEN</field>
+                                <value name="NUMBER_TO_CHECK">
+                                  <block type="lists_getIndex" id="MASTER5_EVEN_DIGIT_5">
+                                    <mutation statement="false" at="true"></mutation>
+                                    <field name="MODE">GET</field>
+                                    <field name="WHERE">FROM_END</field>
+                                    <value name="VALUE">
+                                      <block type="lastDigitList" id="MASTER5_LIST_EVEN_5"></block>
+                                    </value>
+                                    <value name="AT">
+                                      <block type="math_number" id="MASTER5_EVEN_INDEX_5">
+                                        <field name="NUM">5</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="purchase" id="MASTER5_BUY_ODD">
+                <field name="PURCHASE_LIST">DIGITODD</field>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="MASTER5_AFTER" x="0" y="1120">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="controls_if" id="MASTER5_LIMIT_CHECK">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_operation" id="MASTER5_LIMIT_OR">
+            <field name="OP">OR</field>
+            <value name="A">
+              <block type="logic_compare" id="MASTER5_TP_CHECK">
+                <field name="OP">GTE</field>
+                <value name="A">
+                  <block type="total_profit" id="MASTER5_TOTAL_PROFIT_TP"></block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="MASTER5_TP_GET">
+                    <field name="VAR">Master 5 take profit</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_compare" id="MASTER5_SL_CHECK">
+                <field name="OP">LTE</field>
+                <value name="A">
+                  <block type="total_profit" id="MASTER5_TOTAL_PROFIT_SL"></block>
+                </value>
+                <value name="B">
+                  <block type="math_single" id="MASTER5_NEGATIVE_SL">
+                    <field name="OP">NEG</field>
+                    <value name="NUM">
+                      <block type="variables_get" id="MASTER5_SL_GET">
+                        <field name="VAR">Master 5 stop loss</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="notify" id="MASTER5_LIMIT_NOTIFY">
+            <field name="NOTIFICATION_TYPE">success</field>
+            <value name="MESSAGE">
+              <block type="text" id="MASTER5_LIMIT_MESSAGE">
+                <field name="TEXT">Master 5 stopped: take-profit or stop-loss reached</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="trade_again" id="MASTER5_TRADE_AGAIN"></block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

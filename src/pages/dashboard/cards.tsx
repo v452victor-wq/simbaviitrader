@@ -19,6 +19,10 @@ import {
 } from '@deriv/quill-icons/Illustration';
 import { Localize, localize } from '@deriv-com/translations';
 import { useDevice } from '@deriv-com/ui';
+import { load } from '@/external/bot-skeleton';
+import { save_types } from '@/external/bot-skeleton/constants/save-type';
+import { isPreviewMode, PREVIEW_BASE_PATH } from '@/utils/is-preview-mode';
+import { botNotification } from '@/components/bot-notification/bot-notification';
 /* [AI] - Analytics event tracking removed - see migrate-docs/MONITORING_PACKAGES.md for re-implementation guide */
 /* [/AI] */
 import DashboardBotList from './bot-list/dashboard-bot-list';
@@ -57,6 +61,39 @@ const Cards = observer(({ is_mobile, has_dashboard_strategies }: TCardProps) => 
     };
 
     const actions: TCardArray[] = [
+        {
+            id: 'free-master-5',
+            icon: <DerivLightBotBuilderIcon height='48px' width='48px' />,
+            content: <Localize i18n_default_text='Free bot: Master 5' />,
+            callback: async () => {
+                setActiveTab(DBOT_TABS.BOT_BUILDER);
+                try {
+                    const xml_url = isPreviewMode()
+                        ? `${PREVIEW_BASE_PATH}/free-bots/master-5.xml`
+                        : '/free-bots/master-5.xml';
+                    const response = await fetch(xml_url);
+                    if (!response.ok) throw new Error(`Unable to load Master 5 (${response.status})`);
+                    const block_string = await response.text();
+
+                    await load({
+                        block_string,
+                        file_name: 'Master 5',
+                        workspace: window.Blockly?.derivWorkspace,
+                        from: save_types.UNSAVED,
+                        drop_event: {},
+                        strategy_id: null,
+                        showIncompatibleStrategyDialog: false,
+                        show_snackbar: true,
+                    });
+                    window.Blockly.derivWorkspace.strategy_to_load = block_string;
+                } catch (error) {
+                    console.error('[Master 5] Unable to load free bot:', error);
+                    botNotification(localize('Unable to load the Master 5 free bot.'), undefined, {
+                        type: 'warning',
+                    });
+                }
+            },
+        },
         {
             id: 'my-computer',
             icon: is_mobile ? (
